@@ -1,0 +1,18 @@
+mysqlworkbench 远程链接阿里云数据库 使用ssh
+
+ssh服务器ssh更新后 
+
+客户端的 保存的ssh加密串需要更新一次才可以正常ssh登陆
+
+记录 ssh 账号 dynroot 密码 asd1453NMDvnc
+
+dynroot@121.42.156.197's password: 
+Permission denied, please try again.
+dynroot@121.42.156.197's password: 
+Last failed login: Tue Apr 11 15:52:11 CST 2017 from 1.119.129.17 on ssh:notty
+There were 4 failed login attempts since the last successful login.
+Last login: Mon Nov 21 09:22:21 2016
+
+Welcome to aliyun Elastic Compute Service!
+
+[dynroot@iZ2850357ruZ ~]$ asd1453NMDvnc

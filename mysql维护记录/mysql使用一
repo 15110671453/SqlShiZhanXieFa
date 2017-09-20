@@ -1,0 +1,51 @@
+mysql使用一
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| employees          |
+| iisns              |
+| iwedphpshop        |
+| mysql              |
+| performance_schema |
+| shoptowns          |
+| sys                |
+| test               |
+| tpshop             |
+| wanghong           |
+| yii2advanced       |
+| yii2basic          |
++--------------------+
+13 rows in set (0.21 sec)
+
+mysql> use employees;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_employees |
++---------------------+
+| departments         |
+| dept_emp            |
+| dept_manager        |
+| employees           |
+| salaries            |
+| titles              |
++---------------------+
+6 rows in set (0.00 sec)
+
+
+
+mysql> select version(),current_date;
++-----------+--------------+
+| version() | current_date |
++-----------+--------------+
+| 5.7.16    | 2017-04-11   |
++-----------+--------------+
+1 row in set (0.00 sec)
+
+mysql> 

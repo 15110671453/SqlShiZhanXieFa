@@ -1,0 +1,34 @@
+mysql group by 一
+
+
+mysql> select first_name,count(*) cnt from employees group by first_name having cnt>270 order by cnt DESC;
++-------------+-----+
+| first_name  | cnt |
++-------------+-----+
+| Shahab      | 295 |
+| Tetsushi    | 291 |
+| Elgin       | 279 |
+| Anyuan      | 278 |
+| Huican      | 276 |
+| Make        | 275 |
+| Sreekrishna | 272 |
+| Panayotis   | 272 |
+| Hatem       | 271 |
++-------------+-----+
+9 rows in set (0.14 sec)
+
+mysql> 
+
+mysql> select first_name,count(*) cnt from employees group by first_name order by cnt DESC;
++----------------+-----+
+| first_name     | cnt |
++----------------+-----+
+| Shahab         | 295 |
+| Tetsushi       | 291 |
+| Elgin          | 279 |
+| Anyuan         | 278 |
+| Huican         | 276 |
+| Make           | 275 |
+| Sreekrishna    | 272 |
+| Panayotis      | 272 |
+| Hatem          | 271 |

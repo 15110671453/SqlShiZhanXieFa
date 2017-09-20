@@ -1,0 +1,241 @@
+Mac中断命令汇总回顾
+目录操作
+
+命令名	功能描述	使用举例
+mkdir	创建一个目录	mkdir dirname
+rmdir	删除一个目录	rmdir dirname
+mvdir	移动或重命名一个目录	mvdir dir1 dir2
+cd	改变当前目录	cd dirname
+pwd	显示当前目录的路径名	pwd
+ls	显示当前目录的内容	ls -la
+dircmp	比较两个目录的内容	dircmp dir1 dir2
+文件操作
+
+命令名	功能描述	使用举例
+cat	显示或连接文件	cat filename
+pg	分页格式化显示文件内容	pg filename
+more	分屏显示文件内容	more filename
+od	显示非文本文件的内容	od -c filename
+cp	复制文件或目录	cp file1 file2
+rm	删除文件或目录	rm filename
+mv	改变文件名或所在目录	mv file1 file2
+ln	联接文件	ln -s file1 file2
+find	使用匹配表达式查找文件	find . -name "*.c" -print
+file	显示文件类型	file filename
+open	使用默认的程序打开文件	open filename
+选择操作
+
+命令名	功能描述	使用举例
+head	显示文件的最初几行	head -20 filename
+tail	显示文件的最后几行	tail -15 filename
+cut	显示文件每行中的某些域	cut -f1,7 -d: /etc/passwd
+colrm	从标准输入中删除若干列	colrm 8 20 file2
+paste	横向连接文件	paste file1 file2
+diff	比较并显示两个文件的差异	diff file1 file2
+sed	非交互方式流编辑器	sed "s/red/green/g" filename
+grep	在文件中按模式查找	grep "^[a-zA-Z]" filename
+awk	在文件中查找并处理模式	awk '{print $1 $1}' filename
+sort	排序或归并文件	sort -d -f -u file1
+uniq	去掉文件中的重复行	uniq file1 file2
+comm	显示两有序文件的公共和非公共行	comm file1 file2
+wc	统计文件的字符数、词数和行数	wc filename
+nl	给文件加上行号	nl file1 >file2
+安全操作
+
+命令名	功能描述	使用举例
+passwd	修改用户密码	passwd
+chmod	改变文件或目录的权限	chmod ug+x filename
+umask	定义创建文件的权限掩码	umask 027
+chown	改变文件或目录的属主	chown newowner filename
+chgrp	改变文件或目录的所属组	chgrp staff filename
+xlock	给终端上锁	xlock -remote
+编程操作
+
+命令名	功能描述	使用举例
+make	维护可执行程序的最新版本	make
+touch	更新文件的访问和修改时间	touch -m 05202400 filename
+dbx	命令行界面调试工具	dbx a.out
+xde	图形用户界面调试工具	xde a.out
+进程操作
+
+命令名	功能描述	使用举例
+ps	显示进程当前状态	ps u
+kill	终止进程	kill -9 30142
+nice	改变待执行命令的优先级	nice cc -c *.c
+renice	改变已运行进程的优先级	renice +20 32768
+时间操作
+
+命令名	功能描述	使用举例
+date	显示系统的当前日期和时间	date
+cal	显示日历	cal 8 1996
+time	统计程序的执行时间	time a.out
+网络与通信操作
+
+命令名	功能描述	使用举例
+telnet	远程登录	telnet hpc.sp.net.edu.cn
+rlogin	远程登录	rlogin hostname -l username
+rsh	在远程主机执行指定命令	rsh f01n03 date
+ftp	在本地主机与远程主机之间传输文件	ftp ftp.sp.net.edu.cn
+rcp	在本地主机与远程主机 之间复制文件	rcp file1 host1:file2
+ping	给一个网络主机发送 回应请求	ping hpc.sp.net.edu.cn
+mail	阅读和发送电子邮件	mail
+write	给另一用户发送报文	write username pts/1
+mesg	允许或拒绝接收报文	mesg n
+Korn Shell 命令
+
+命令名	功能描述	使用举例
+history	列出最近执行过的 几条命令及编号	history
+r	重复执行最近执行过的 某条命令	r -2
+alias	给某个命令定义别名	alias del=rm -i
+unalias	取消对某个别名的定义	unalias del
+其它命令
+
+命令名	功能描述	使用举例
+uname	显示操作系统的有关信息	uname -a
+clear	清除屏幕或窗口内容	clear
+env	显示当前所有设置过的环境变量	env
+who	列出当前登录的所有用户	who
+whoami	显示当前正进行操作的用户名	whoami
+tty	显示终端或伪终端的名称	tty
+stty	显示或重置控制键定义	stty -a
+du	查询磁盘使用情况	du -k subdir
+df	显示文件系统的总空间和可用空间	df /tmp
+w	显示当前系统活动的总信息	w
+
+网络操作
+
+ 比较 ipconfig----ifconfig
+netstat 
+
+
+Mac OSX下常用的网络诊断命令。它们能帮助我们发现网络问题。文中提到的协议和网络通信原理，可参考协议森林。
+
+有些工具，如arping, arp-scan，需要借助HomeBrew安装。
+
+ 
+
+基本工具
+网络诊断的第一步，是了解自己的设备，比如有哪些接口，IP地址都是什么。
+
+ifconfig
+
+显示网络接口(interface)信息。如接口名称，接口类型，接口的IP地址，硬件的MAC地址等。
+
+ 
+
+ARP
+ARP协议用在局域网(LAN)内部。借用ARP协议，设备可以知道同一局域网内的IP-MAC对应关系。当我们访问一个本地IP地址时，设备根据该对应关系，与对应的MAC地址通信。通过ARP工具，我们可以知道局域网内的通信是否正常。
+
+arp -a
+
+显示本地存储的IP-MAC对应关系
+
+ 
+
+sudo arping -I eth0 192.168.1.1
+
+经eth0接口，发送ARP请求，查询IP为192.168.1.1设备的MAC地址
+
+ 
+
+sudo arp-scan -l
+
+查询整个局域网内的所有IP地址的对应MAC地址
+
+ 
+
+sudo tcpdump -i en0 arp
+
+监听en0接口的arp协议通信
+
+ 
+
+网络层
+网络层是一个广域的互联网，互联网上的设备用IP地址识别。ping是向某个IP地址发送ICMP协议的ECHO_REQUEST请求。收到该请求的设备，将返回ICMP回复。如果ping到某个IP地址，那么说明该IP地址的设备可以经网络层顺利到达。
+
+ping 192.168.1.1
+
+向IP地址192.168.1.255发送ICMP请求。如果该地址的ICMP没有被禁用，那么在该网上的设备将回复。
+
+  ping 192.168.1.255
+
+  向广播(broadcast)地址192.168.1.255发送ICMP请求。如果ICMP没有被禁用，那么在该网上的设备将回复。
+
+需要注意的是，许多设备会禁用ICMP。如果ping不到一个设备，并不一定是网络层故障。
+
+ 
+
+如果两个设备有相同的IP地址，将导致IP冲突。许多网络中是由DHCP协议自动分配IP地址的，这样可以极大的减少IP冲突的可能性。DHCP服务器与设备达成协议，设备将在一定时间内占据某个IP地址，而DHCP服务器不再把该IP地址分配给别人。
+
+sudo ipconfig set en0 DHCP
+
+更新DHCP租约。设备将释放IP地址，再从DHCP服务器重新获得IP地址。
+
+sudo ipconfig set en0 INFORM 192.168.0.120
+
+将接口en0设定为静态IP地址。
+
+ 
+
+路由
+局域网通过路由器，接入广域的互联网。互联网上的通信往往要经过多个路由器接力。途中路由器的故障，可能导致互联网访问异常。
+
+netstat -nr
+
+显示路由表。从路由表中，可以找到网关(Gateway)。网关是通向更加广域网络的出口。
+
+ 
+
+traceroute 74.125.128.99
+
+追踪到达IP目的地的全程路由。
+
+  traceroute -I 74.125.128.99
+
+  通过ICMP协议，追踪路由。ICMP协议经常会被禁用，所以会返回"*"的字符串。
+
+  sudo traceroute -T -p 80 74.125.128.99
+
+  通过TCP协议，经80端口，追踪路由。TCP协议的默认端口80很少会被禁用。
+
+ 
+
+网络监听
+tcpdump是一款网络抓包工具。它可以监听网络接口不同层的通信，并过滤出特定的内容，比如特定协议、特定端口等等。我们上面已经使用tcpdump监听了ARP协议通信。这里我们来看更多的监听方式。
+
+sudo tcpdump -i en0
+
+监听en0接口的所有通信
+
+  sudo tcpdump -A -i en0 
+
+  用ASCII显示en0接口的通信内容
+
+  sudo tcpdump -i en0 'port 8080'
+
+  显示en0接口的8080端口的通信
+
+  sudo tcpdump -i eth1 src 192.168.1.200
+
+  显示eth1接口，来自192.168.1.200的通信
+
+  sudo tcpdump -i eth1 dst 192.168.1.101 and port 80
+
+  显示eth1接口80端口，目的地为192.168.1.101的通信
+
+  sudo tcpdump -w record.pcap -i lo0
+
+  将lo0接口的通信存入文件record.pcap
+
+ 
+
+域名解析
+DNS是在域名和IP之间进行翻译。DNS故障会导致我们无法通过域名访问某个网址。 
+
+host www.sina.com.cn
+
+DNS域名解析。返回域名对应的IP地址
+
+ 
+
+

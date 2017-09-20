@@ -1,0 +1,73 @@
+mysql修改数据DDL DML
+
+mysql> insert into employees_t_2 (emp_no,birth_date,first_name,last_name,gender,hire_date) values ('1001','1976-11-11','Gary','Chen','M','1998-09-20');         
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employees_t_2;                                             +--------+------------+------------+-----------+--------+------------+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
++--------+------------+------------+-----------+--------+------------+
+|   1001 | 1976-11-11 | Gary       | Chen      | M      | 1998-09-20 |
+|   1111 | 1976-11-11 | Gary       | Chen      | M      | 1998-09-20 |
+|   1112 | 1977-11-11 | hua        | Chen      | M      | 2000-02-02 |
+|   1113 | 1988-12-02 | feng       | yu        | M      | 2013-12-20 |
+|   1114 | 1993-02-01 | yong       | Chen      | M      | 2010-10-01 |
++--------+------------+------------+-----------+--------+------------+
+5 rows in set (0.00 sec)
+
+修改员工记录信息
+
+mysql>  update employees_t_2 set first_name='gary' ,last_name='wang' where emp_no=1001;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employees_t_2;                                             +--------+------------+------------+-----------+--------+------------+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
++--------+------------+------------+-----------+--------+------------+
+|   1001 | 1976-11-11 | gary       | wang      | M      | 1998-09-20 |
+|   1111 | 1976-11-11 | Gary       | Chen      | M      | 1998-09-20 |
+|   1112 | 1977-11-11 | hua        | Chen      | M      | 2000-02-02 |
+|   1113 | 1988-12-02 | feng       | yu        | M      | 2013-12-20 |
+|   1114 | 1993-02-01 | yong       | Chen      | M      | 2010-10-01 |
++--------+------------+------------+-----------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+
+
+删除员工记录信息
+
+
+mysql> delete from employees_t_2 where emp_no=1001;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from employees_t_2;
++--------+------------+------------+-----------+--------+------------+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
++--------+------------+------------+-----------+--------+------------+
+|   1111 | 1976-11-11 | Gary       | Chen      | M      | 1998-09-20 |
+|   1112 | 1977-11-11 | hua        | Chen      | M      | 2000-02-02 |
+|   1113 | 1988-12-02 | feng       | yu        | M      | 2013-12-20 |
+|   1114 | 1993-02-01 | yong       | Chen      | M      | 2010-10-01 |
++--------+------------+------------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> 
+
+
+查询指定表中特定几个列的数据
+查询出生日期晚于 1980-01-01 的员工记录
+
+mysql> select emp_no,birth_date,first_name from employees_t_2  where birth_date>'1980-01-01';
++--------+------------+------------+
+| emp_no | birth_date | first_name |
++--------+------------+------------+
+|   1113 | 1988-12-02 | feng       |
+|   1114 | 1993-02-01 | yong       |
++--------+------------+------------+
+2 rows in set (0.00 sec)
+
+mysql> 
+
+
+

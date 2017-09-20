@@ -1,0 +1,71 @@
+查询起别名 
+
+
+mysql> use employees;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_employees |
++---------------------+
+| departments         |
+| dept_emp            |
+| dept_manager        |
+| employees           |
+| salaries            |
+| titles              |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> select count(*) from employees;
++----------+
+| count(*) |
++----------+
+|   300024 |
++----------+
+1 row in set (0.03 sec)
+
+mysql> select min(emp_no) from employees;
++-------------+
+| min(emp_no) |
++-------------+
+|       10001 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> select max(emp_no) from employees;
++-------------+
+| max(emp_no) |
++-------------+
+|      499999 |
++-------------+
+1 row in set (0.00 sec)
+
+查询将统计 ‘1986-06-26’ 有多少人入职
+
+mysql> select sum(hire_date='1986-06-26') as sum_1986 from employees where hire_date='1986-06-26';
++----------+
+| sum_1986 |
++----------+
+|       83 |
++----------+
+1 row in set (0.07 sec)
+
+mysql> 
+
+
+查询将分别统计 ‘1986-06-26’ 和 '1985-11-21' 有多少人入职
+
+
+mysql> select sum(hire_date='1986-06-26') as sum_1986 , sum(hire_date='1985-11-21') as sum_1985 from employees
+    -> ;
++----------+----------+
+| sum_1986 | sum_1985 |
++----------+----------+
+|       83 |      119 |
++----------+----------+
+1 row in set (0.10 sec)
+
+mysql> 

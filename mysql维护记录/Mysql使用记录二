@@ -1,0 +1,48 @@
+Mysql使用记录二
+
+mysql> create table employees_t_2 (emp_no int(11) not null ,birth_date date not null,first_name varchar(14) not null,last_name varchar(16) not null,gender enum('M','F') not null ,hire_date date not null ,primary key (emp_no)) engine= innodb default charset=utf8;
+Query OK, 0 rows affected (0.33 sec)
+
+
+查看表结构
+
+mysql> DESC employees_t_2;
++------------+---------------+------+-----+---------+-------+
+| Field      | Type          | Null | Key | Default | Extra |
++------------+---------------+------+-----+---------+-------+
+| emp_no     | int(11)       | NO   | PRI | NULL    |       |
+| birth_date | date          | NO   |     | NULL    |       |
+| first_name | varchar(14)   | NO   |     | NULL    |       |
+| last_name  | varchar(16)   | NO   |     | NULL    |       |
+| gender     | enum('M','F') | NO   |     | NULL    |       |
+| hire_date  | date          | NO   |     | NULL    |       |
++------------+---------------+------+-----+---------+-------+
+6 rows in set (0.00 sec)
+
+mysql> 
+
+插入数据 一条
+
+或 多条
+
+mysql> insert into employees_t_2 (emp_no,birth_date,first_name,last_name,gender,hire_date) values ('1111','1976-11-11','Gary','Chen','M','1998-09-20');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into employees_t_2 (emp_no,birth_date,first_name,last_name,gender,hire_date) values ('1112','1977-11-11','hua','Chen','M','2000-02-02'),('1113','1988-12-02','feng','yu','M','2013-12-20'),('1114','1993-02-01','yong','Chen','M','2010-10-01');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> 
+
+mysql> select * from employees_t_2;
++--------+------------+------------+-----------+--------+------------+
+| emp_no | birth_date | first_name | last_name | gender | hire_date  |
++--------+------------+------------+-----------+--------+------------+
+|   1111 | 1976-11-11 | Gary       | Chen      | M      | 1998-09-20 |
+|   1112 | 1977-11-11 | hua        | Chen      | M      | 2000-02-02 |
+|   1113 | 1988-12-02 | feng       | yu        | M      | 2013-12-20 |
+|   1114 | 1993-02-01 | yong       | Chen      | M      | 2010-10-01 |
++--------+------------+------------+-----------+--------+------------+
+4 rows in set (0.00 sec)
+
+mysql> 
